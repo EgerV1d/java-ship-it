@@ -21,26 +21,13 @@ public class DeliveryApp {
             int choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice) {
-                case 1:
-                    addParcel();
-                    break;
-                case 2:
-                    sendParcels();
-                    break;
-                case 3:
-                    calculateCosts();
-                    break;
-                case 4:
-                    trackParcels();
-                    break;
-                case 5:
-                    showBoxContents();
-                    break;
-                case 0:
-                    running = false;
-                    break;
-                default:
-                    System.out.println("Неверный выбор.");
+                case 1 -> addParcel();
+                case 2 -> sendParcels();
+                case 3 -> calculateCosts();
+                case 4 -> trackParcels();
+                case 5 -> showBoxContents();
+                case 0 -> running = false;
+                default -> System.out.println("Неверный выбор.");
             }
         }
     }
@@ -76,20 +63,20 @@ public class DeliveryApp {
 
 
         switch (choice) {
-            case 1:
+            case 1 -> {
                 StandardParcel standardParcel = new StandardParcel(description, weight, deliveryAddress, sendDay);
                 allParcels.add(standardParcel);
                 standardBox.addParcel(standardParcel);
                 System.out.println("Посылка добавлена");
-                break;
-            case 2:
+            }
+            case 2 -> {
                 FragileParcel fragileParcel = new FragileParcel(description, weight, deliveryAddress, sendDay);
                 allParcels.add(fragileParcel);
                 trackableParcels.add(fragileParcel);
                 fragileBox.addParcel(fragileParcel);
                 System.out.println("Посылка добавлена");
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Введите срок годности посылки в днях:");
                 int timeToLive = Integer.parseInt(scanner.nextLine());
                 PerishableParcel perishableParcel = new PerishableParcel(description, weight,
@@ -97,10 +84,10 @@ public class DeliveryApp {
                 allParcels.add(perishableParcel);
                 perishableBox.addParcel(perishableParcel);
                 System.out.println("Посылка добавлена");
-                break;
-            default:
+            }
+            default -> {
                 System.out.println("Неверный выбор.");
-                break;
+            }
         }
     }
 
@@ -164,18 +151,10 @@ public class DeliveryApp {
         int choice = Integer.parseInt(scanner.nextLine());
 
         switch (choice) {
-            case 1:
-                boxContents("стандартные", standardBox.getAllParcels());
-                break;
-            case 2:
-                boxContents("хрупкие", fragileBox.getAllParcels());
-                break;
-            case 3:
-                boxContents("скоропортящиеся", perishableBox.getAllParcels());
-                break;
-            default:
-                System.out.println("Неверный выбор");
-                break;
+            case 1 -> boxContents("стандартные", standardBox.getAllParcels());
+            case 2 -> boxContents("хрупкие", fragileBox.getAllParcels());
+            case 3 -> boxContents("скоропортящиеся", perishableBox.getAllParcels());
+            default -> System.out.println("Неверный выбор");
         }
 
     }
